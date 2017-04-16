@@ -16,9 +16,11 @@ import java.util.Set;
 public class Graph {
 
     private final Set<Vertex> vertices;
+    private final Set<Edge> edges;
 
     public Graph(int... keys) {
         vertices = new HashSet<>();
+        edges = new HashSet<>();
         addAllVertices(keys);
     }
 
@@ -45,6 +47,26 @@ public class Graph {
             return null;
         } else {
             return vertex;
+        }
+    }
+
+    public void addEdge(int from, int to) {
+        Edge edge = findEdge(from, to);
+        if (edge != null) {
+            edges.add(edge);
+        }
+    }
+
+    public boolean hasEdge(int from, int to) {
+        return findEdge(from, to) == null;
+    }
+
+    Edge findEdge(int from, int to) {
+        Edge edge = new Edge(from, to);
+        if (edges.contains(edge)) {
+            return null;
+        } else {
+            return edge;
         }
     }
 }

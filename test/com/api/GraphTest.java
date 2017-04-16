@@ -2,41 +2,58 @@ package com.api;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GraphTest {
 
     @Test
-    void assertAddedVertexFound() {
+    void assertHasAddedVertex() {
         Graph graph = new Graph();
         int key = 12;
         graph.addVertex(key);
-        assertNull(graph.findVertex(key));
+        assertFalse(graph.hasVertex(key + 1));
     }
 
     @Test
-    void assertNotAddedVertexNotFound() {
+    void assertHasNot_NotAddedVertex() {
         Graph graph = new Graph();
         int key = 12;
         graph.addVertex(key);
-        assertNotNull(graph.findVertex(13));
+        assertFalse(graph.hasVertex(key + 1));
     }
 
     @Test
-    void assertVertexAdded() {
+    void assertHasAllAddedVertices() {
         Graph graph = new Graph();
-        int key = 12;
-        graph.addVertex(key);
-        assertTrue(graph.hasVertex(key));
+        int[] keys = {
+                1, 2, 3
+        };
+        for (int key : keys) {
+            graph.addVertex(key);
+        }
+        for (int key : keys) {
+            assertTrue(graph.hasVertex(key));
+        }
     }
 
     @Test
-    void assertVertexFound() {
-
+    void assertHasAddedEdge() {
+        Graph graph = new Graph();
+        int from = 1;
+        int to = 2;
+        graph.addAllVertices(from, to);
+        graph.addEdge(from, to);
+        assertTrue(graph.hasEdge(from, to));
     }
 
     @Test
-    void assertVertexNotFound() {
-
+    void assertHasNot_NotAddedEdge() {
+        Graph graph = new Graph();
+        int from = 1;
+        int to = 2;
+        graph.addAllVertices(from, to);
+        graph.addEdge(to, from);
+        assertFalse(graph.hasEdge(from, to));
     }
 }
