@@ -17,6 +17,9 @@ final class Vertex {
         return key;
     }
 
+    // TODO: When testing equals, should I make sure that it implements an equivalence relation (reflexive, transitive,
+    // and symmetric)?
+    // TODO: Also try http://jqno.nl/equalsverifier/
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

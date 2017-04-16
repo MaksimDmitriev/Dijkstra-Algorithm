@@ -2,8 +2,7 @@ package com.api;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class VertexTest {
 
@@ -20,6 +19,26 @@ class VertexTest {
         Vertex vertex1 = new Vertex(key);
         Vertex vertex2 = vertex1;
         assertEquals(vertex1, vertex2);
+    }
+
+    @Test
+    void assertEqualsSymmetric() {
+        int key = 90;
+        Vertex vertex1 = new Vertex(key);
+        Vertex vertex2 = new Vertex(key);
+        Vertex vertex3 = new Vertex(key);
+        assertTrue(vertex1.equals(vertex2));
+        assertTrue(vertex2.equals(vertex3));
+        assertTrue(vertex1.equals(vertex3));
+    }
+
+    @Test
+    void assertEqualsTransitive() {
+        int key = 90;
+        Vertex vertex1 = new Vertex(key);
+        Vertex vertex2 = new Vertex(key);
+        assertEquals(vertex1, vertex2);
+        assertEquals(vertex2, vertex1);
     }
 
     @Test
