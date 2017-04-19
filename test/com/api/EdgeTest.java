@@ -41,4 +41,11 @@ class EdgeTest {
         Edge edge2 = new Edge(1, 34);
         assertNotEquals(edge1, edge2);
     }
+
+    @Test
+    void assertOppositeEdgesAreNotEqual() {
+        Edge edge1 = new Edge(1, 2);
+        Edge edge2 = new Edge(2, 1);
+        assertNotEquals(edge1, edge2);
+    }
 }

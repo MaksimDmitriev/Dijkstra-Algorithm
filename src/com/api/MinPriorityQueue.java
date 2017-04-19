@@ -2,5 +2,9 @@ package com.api;
 
 interface MinPriorityQueue {
 
-    int extractMin();
+    Vertex extractMin();
+
+    boolean isEmpty();
+
+    void insert(Vertex vertex);
 }

@@ -4,10 +4,16 @@ final class Edge {
 
     private final int from;
     private final int to;
+    private final int distance;
 
     Edge(int from, int to) {
+        this(from, to, 1);
+    }
+
+    Edge(int from, int to, int distance) {
         this.from = from;
         this.to = to;
+        this.distance = distance;
     }
 
     @Override

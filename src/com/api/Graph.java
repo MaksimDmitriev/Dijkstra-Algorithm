@@ -2,6 +2,7 @@ package com.api;
 
 import com.sun.istack.internal.NotNull;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -68,5 +69,13 @@ public class Graph {
         } else {
             return edge;
         }
+    }
+
+    Set<Vertex> getVertices() {
+        return Collections.unmodifiableSet(vertices);
+    }
+
+    int getVertexCount() {
+        return vertices.size();
     }
 }
